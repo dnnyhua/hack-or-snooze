@@ -55,7 +55,7 @@ function addDeleteBtn() {
 function addStar(story, user) {
   const isFavorite = user.isFavorite(story);
 
-  // fas isfiled star, far is just outline of the star
+  // fas is filed star, far is just outline of the star
   const starType = isFavorite ? "fas" : "far";
   return `
   <span class="star">
@@ -70,7 +70,7 @@ function putStoriesOnPage() {
 
   $allStoriesList.empty();
 
-  // loop through all of our stories and generate HTML for them
+  // loop through each story and generate HTML for them
   for (let story of storyList.stories) {
     const $story = generateStoryMarkup(story);
     $allStoriesList.append($story);
@@ -80,7 +80,7 @@ function putStoriesOnPage() {
 }
 
 
-/** Add new story callback function */ 
+/** Add submit new story callback function */ 
 async function submitNewStory(evt){
   evt.preventDefault();
 
@@ -140,13 +140,12 @@ function putFavoritedStoriesOnPage(){
 
 
 /** Favorite and Unfavorite a Story Click Event */
-
 async function toggleFav(evt){
   const $clickedStory = $(evt.target)
-  let storyId = $clickedStory.parents("li").attr("id");
+  let storyIdClicked = $clickedStory.parents("li").attr("id");
   
   // this will look for the storyId in storyList that has the same storyId as the story that was clicked on
-  const story = storyList.stories.find(s => s.storyId === storyId)
+  const story = storyList.stories.find(s => s.storyId === storyIdClicked)
 
   if ($clickedStory.hasClass("fas")) {
     await currentUser.removeFromFavorites(story);
@@ -161,7 +160,6 @@ $storiesLists.on("click", ".star", toggleFav);
 
 
 /** Deleting a Story */
-
 async function deleteStory(evt){
   const $clickedStory = $(evt.target);
   const storyId = $clickedStory.parents("li").attr("id");

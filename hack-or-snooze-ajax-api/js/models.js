@@ -2,7 +2,7 @@
 
 const BASE_URL = "https://hack-or-snooze-v3.herokuapp.com";
 
-// async function asd() {
+// async function storiesTest() {
 //   let res = await axios.get("https://hack-or-snooze-v3.herokuapp.com/stories")
   
 //   let allUrls = res.data.stories.map((result) => {
@@ -43,8 +43,6 @@ const BASE_URL = "https://hack-or-snooze-v3.herokuapp.com";
 //   console.log(res);
 //   console.log(res.data.token);
 // }
-
-
 
 
 /******************************************************************************
@@ -139,7 +137,7 @@ class StoryList {
     // referring to data property on line 150, which is the data that will be used to create an instance of story
     let story = new Story(response.data.story);
 
-    // unshift will add the new story to the beginning of the storylist
+    // unshift will add the new story to the beginning of the storylist array
     this.stories.unshift(story);
 
     // update the user's ownStories array
@@ -291,9 +289,10 @@ class User {
     });
   }
 
+
   // remove story from favorites
   async removeFromFavorites(story){
-    this.favorites = this.favorites.filter(s => s.storyId !== story.storyId);
+    this.favorites = this.favorites.filter(favorite => favorite.storyId !== story.storyId);
 
     // make delete request to remove story from favorites
     await axios({
@@ -304,8 +303,7 @@ class User {
   }
 
 
-
-  // return true of false if the user favorite the story or not
+  // return true or false if the user favorite the story or not
   isFavorite(story) {
     return this.favorites.some(s => (s.storyId === story.storyId));
   }

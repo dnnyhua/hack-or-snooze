@@ -4,11 +4,10 @@
 let currentUser;
 
 /******************************************************************************
- * User login/signup/login
- */
+ * User login/signup/login */
+
 
 /** Handle login form submission. If login ok, sets up the user instance */
-
 async function login(evt) {
   console.debug("login", evt);
   evt.preventDefault();
@@ -29,8 +28,8 @@ async function login(evt) {
 
 $loginForm.on("submit", login);
 
-/** Handle signup form submission. */
 
+/** Handle signup form submission. */
 async function signup(evt) {
   console.debug("signup", evt);
   evt.preventDefault();
@@ -51,11 +50,10 @@ async function signup(evt) {
 
 $signupForm.on("submit", signup);
 
+
 /** Handle click of logout button
  *
- * Remove their credentials from localStorage and refresh page
- */
-
+ * Remove their credentials from localStorage and refresh page */
 function logout(evt) {
   console.debug("logout", evt);
   localStorage.clear();
@@ -64,6 +62,7 @@ function logout(evt) {
 }
 
 $navLogOut.on("click", logout);
+
 
 /******************************************************************************
  * Storing/recalling previously-logged-in-user with localStorage
